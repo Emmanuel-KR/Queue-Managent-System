@@ -11,7 +11,7 @@ namespace QueueSystem.Controllers
 
     public class AccountController : Controller
     {
-        private const string _tableName = "users";
+        private const string _tableName = "Users";
         private IConfiguration _config;
         CommonHelper _helper;
         public AccountController(IConfiguration config)
@@ -40,12 +40,12 @@ namespace QueueSystem.Controllers
             {
                 bool Isfind = SignInMethod(vm.Name, vm.Password);
                // var getUserRole = HttpContext.Session.GetString("Role");
-                var getUserServingPointId = HttpContext.Session.GetInt32("ServicePointId");
+                //var getUserServingPointId = HttpContext.Session.GetInt32("ServicePointId");
                 if (Isfind == true)
                 {
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.NameIdentifier,Convert.ToString(getUserServingPointId)),
+                        //new Claim(ClaimTypes.NameIdentifier,Convert.ToString(getUserServingPointId)),
                         new Claim(ClaimTypes.Name, vm.Name),
                         //new Claim(ClaimTypes.Role, getUserRole)
 
@@ -69,8 +69,9 @@ namespace QueueSystem.Controllers
                     }
                 }
             }
-            var role = HttpContext.Session.GetString("Role");
+            // var role = HttpContext.Session.GetString("Role");
             //Add if condition according to role
+            var  role = "Role";
             if (role == "Admin")
             {
                 return RedirectToAction("Dashboard", "Admin");

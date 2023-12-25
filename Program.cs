@@ -1,4 +1,6 @@
 
+using Microsoft.AspNetCore.Authentication.Cookies;
+using QueueSystem.Helper;
 using QueueSystem.Repositories;
 using QueueSystem.Services;
 
@@ -9,6 +11,14 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IQueueRepository, QueueRepository>();
+builder.Services.AddScoped<CommonHelper>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+            });
+builder.Services.AddSession();
 
 var app = builder.Build();
 

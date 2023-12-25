@@ -12,7 +12,7 @@ namespace QueueSystem.Repositories
                           "Password=post2023;" +
                           "Database=QMSDb";
 
-        private const string _serviceProvidersTable = "users";
+        private const string _serviceProvidersTable = "Users";
         private const string _servicePointTable = "servicepoints";
 
         private NpgsqlConnection connection;
